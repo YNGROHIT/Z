@@ -7,8 +7,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap");
  
 
+/* <body class="bg-cover bg-center" style="background-image: "C:\Users\asus\Downloads\black-textured-background.jpg" ('black-textured-background');">
+</body> */
 body{
-  background-color: #B0B3B8!important;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* ---------------------------------- */

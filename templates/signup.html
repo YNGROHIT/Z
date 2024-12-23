@@ -16,28 +16,38 @@
     <link rel="stylesheet" href="{% static 'assets/css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
+    <style>
+        body {
+            background-image: url('{% static "assets/images/bg-signup.jpg" %}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
 
 </head>
-
-<body class="bg-gray-100">
-
-
+<body>  
     <div id="wrapper" class="flex flex-col justify-between h-screen">
 
         <!-- header-->
         <div class="bg-white py-4 shadow dark:bg-gray-800">
             <div class="max-w-6xl mx-auto">
-
-
                 <div class="flex items-center lg:justify-between justify-around">
-
-                    <a href="trending.html">
-                        <b><h1 style="font-size: 1.5rem;"> ZESTMEDIA </h1></b>
+                    <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" aria-hidden="true" role="img" width="1.5em" height="1.5em" preserveAspectRatio="xMidYMid meet">
+                            <path d="M183.6 42.4C177.5 35.8 169 32 160 32s-17.5 3.8-23.6 10.4l-88 96c-11.9 13-11.1 33.3 2 45.2s33.3 11.1 45.2-2L128 146.3 128 448c0 17.7 14.3 32 32 32s32-14.3 32-32l0-301.7 32.4 35.4c11.9 13 32.2 13.9 45.2 2s13.9-32.2 2-45.2l-88-96zM320 320c0 17.7 14.3 32 32 32l50.7 0-73.4 73.4c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-50.7 0 73.4-73.4c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8l-128 0c-17.7 0-32 14.3-32 32zM416 32c-12.1 0-23.2 6.8-28.6 17.7l-64 128-16 32c-7.9 15.8-1.5 35 14.3 42.9s35 1.5 42.9-14.3l7.2-14.3 88.4 0 7.2 14.3c7.9 15.8 27.1 22.2 42.9 14.3s22.2-27.1 14.3-42.9l-16-32-64-128C439.2 38.8 428.1 32 416 32zM395.8 176L416 135.6 436.2 176l-40.4 0z"/>
+                        </svg>
+                        <b style="margin-left: 8px; display: flex; align-items: center; text-decoration: none; color: inherit;">
+                            <h1 style="font-size: 1.5rem; margin: 0; padding-right: 0.5rem; color: black;">Z</h1>
+                            <p style="font-size: 12px; margin-top: 9px; margin-left: -6px; color:black;">.com</p>
+                        </b>
                     </a>
-
+                
                     <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
                         
-                        <a href="signin.html" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Login</a>
+                        <a href="/signin" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Login</a>
+                
                     </div>
 
                 </div>
@@ -48,26 +58,42 @@
 
         <div>
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
-                <h1 class="lg:text-3xl text-xl font-semibold mb-6"> Sign in</h1>
-                <!--<p class="mb-2 text-black text-lg"> Register to manage your account </p>-->
-                <form action="index.html">
+                <h1 class="lg:text-3xl text-xl font-semibold mb-6" style="color: #f9f9f9 !important;"> Sign in</h1>
+                <!--<p class="mb-2 text-black text-lg"> Register to manage your account </p>-->  
+
+                <div>
+                    <style>
+                        h5{
+                            color: rgb(255, 0, 0);
+                        }
+                      </style>
+                      {% for message in messages %}
+                      <h5>{{ message }}</h5>
+                      {% endfor %}
+                </div>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
                     <!--<div class="flex lg:flex-row flex-col lg:space-x-2">
                         <input type="text" placeholder="First Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                         <input type="text" placeholder="Last Name" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     </div>-->
-                    <input type="text" placeholder="Username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <div class="flex justify-start my-4 space-x-1">
+                    <input type="text" name="username" placeholder="username" class=" mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="email" name="email" placeholder="Email" class=" mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="password" name="password" placeholder="Password" class=" mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="password" name="password2" placeholder="Confirm Password" class=" mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <!-- <div class="flex justify-start my-4 space-x-1">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>
                             <label for="chekcbox1"><span class="checkbox-icon"></span> I Agree</label>
                         </div>
                         <a href="#"> Terms and Conditions</a>
-                    </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    </div> -->
+                   
+
+                    <button type="submit" class="bg-green-500 text-white px-6 py-3 rounded-md shadow transform transition-transform duration-300 ease-in-out hover:scale-105l">Register</button>
                     <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Do you have an account? <a href="form-login.html"> Login </a></p>
+                        <p class="signin.html"> Do you have an account? <a href="/signin"> Login </a></p>
                     </div>
                 </form>
             </div>
@@ -77,13 +103,13 @@
 
         <div class="lg:mb-5 py-3 uk-link-reset">
             <div class="flex flex-col items-center justify-between lg:flex-row max-w-6xl mx-auto lg:space-y-0 space-y-3">
-                <div class="flex space-x-2 text-gray-700 uppercase">
+                <div class="flex space-x-2 uppercase">
                     <a href="#"> About</a>
                     <a href="#"> Help</a>
                     <a href="#"> Terms</a>
                     <a href="#"> Privacy</a>
                 </div>
-                <p class="capitalize"> © copyright 2024 ZESTMIND </p>
+                <p class="capitalize"> © copyright 2024 zestminds technologies pvt. ltd </p>
             </div>
         </div>
 
